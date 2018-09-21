@@ -1,0 +1,17 @@
+QCDMA.m The original QCDMA code. 
+- For phase flip, the encoding dimension is always equal to the number of time bins.
+- For linear phase ramp, the encoding dimension is determined by the EOM speed.
+
+
+QCDMAv01.m 
+- For phase flip, the number of time bins now is determined by the EOM speed too, and the encoding dimension is determined based on number of flips. (With the assumption that the more flips, the less the error).
+- Bug? for EOM speed = 0.1, the BER goes down then goes up with inceasing dimensions.
+- Save data to file is implemented.
+
+QCDMAv02.m 
+- For phase flip, the encoding dimension is determined by the error rate. 
+- Change in the 'for' loop: we don't need to do individual FFT for every n_mod in PF. Instead, do it once for all dimensions, then pick out the appropriate ones for different n_mod. Yet, for LP, we'll still need to do this.
+
+QCDMAv03.m 
+- @@More efficient calculation. Now only do a full dimensional FFT, sorted by the error rate, then pick the number of dimensions.
+- The above change is not implemented.
